@@ -1,4 +1,7 @@
 Revision history for Pye
 
+1.000001  2014-02-02 18:00:04 Asia/Jerusalem
+	- Bugfix: _remove_dots should also remove dots for hashes in an array
+
 1.000000  2013-12-24 22:04:35 Asia/Jerusalem
 	- First public release

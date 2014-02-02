@@ -30,4 +30,4 @@ requires:
 resources:
   homepage: https://github.com/ido50/Pye
   repository: https://github.com/ido50/Pye.git
-version: 1.000000
+version: 1.000001

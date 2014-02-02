@@ -11,7 +11,7 @@ use MongoDB;
 use MongoDB::Code;
 use Tie::IxHash;
 
-our $VERSION = "1.000000";
+our $VERSION = "1.000001";
 $VERSION = eval $VERSION;
 
 my $now = MongoDB::Code->new(code => 'function() { return new Date() }');
@@ -22,7 +22,7 @@ Pye - Session-based logging platform on top of MongoDB
 
 =head1 VERSION
 
-version 1.000000
+version 1.000001
 
 =head1 SYNOPSIS
 
@@ -242,6 +242,11 @@ sub _remove_dots {
 
 			if (ref $data->{$_} && ref $data->{$_} eq 'HASH') {
 				$data{$new} = $self->_remove_dots($data->{$_});
+			} elsif (ref $data->{$_} && ref $data->{$_} eq 'ARRAY') {
+				$data{$new} = [];
+				foreach my $item (@{$data->{$_}}) {
+					push(@{$data{$new}}, $self->_remove_dots($item));
+				}
 			} else {
 				$data{$new} = $data->{$_};
 			}
